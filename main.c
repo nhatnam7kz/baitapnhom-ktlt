@@ -16,10 +16,31 @@ int main () {
         chon = hienthimenu();
         switch (chon) {
             case 1:
-            
-            printf("So giao dich can nhap: "); scanf("%d",&n);
-            a = (giaodich *) malloc (sizeof(giaodich) * n);
-            nhapgiaodich(a,n);
+            int chon1;
+            printf("\n1. Nhap truc tiep\n2. Nhap qua file\n\nNhap lua chon: ");
+            scanf("%d",&chon1);
+
+            if (chon1 == 1) {
+                printf("So giao dich can nhap: "); scanf("%d",&n);
+                a = (giaodich *) malloc (sizeof(giaodich) * n);
+                nhapgiaodich(a,n);
+                break;
+            } else if (chon1 == 2) {
+                FILE *c;
+                c= fopen("input.txt","r");
+                if (c == NULL) {
+                    printf("Khong tim thay file input.txt!\n");
+                    break;
+                }
+                fscanf(c,"%d",&n);
+                fgetc(c);
+                a = (giaodich *) malloc (sizeof(giaodich) * n);
+                docFile(c,n,a);
+                printf("Nhap du lieu tu file thanh cong!\n");
+            } else {
+                printf("Lua chon khong hop le!\n");
+            }
+
             break;
 
             case 2:

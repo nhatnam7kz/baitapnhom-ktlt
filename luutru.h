@@ -8,6 +8,6 @@ void luuFile (FILE *a,int n, giaodich *t);
 
 
 
-void docFile (FILE *a , int n, giaodich *t);
+void docFile (FILE *a ,int n, giaodich *t);
 
 #endif

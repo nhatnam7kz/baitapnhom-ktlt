@@ -19,16 +19,16 @@ void luuFile (FILE *a,int n, giaodich *t) {
     }
 }
 
-void docFile (FILE *a , int n, giaodich *t) {
+void docFile (FILE *a ,int n,giaodich *t) {
     int i;
-    a = fopen ("input.txt","r");
     for (i=0;i<n;i++) {
         fgets(t[i].tenkhoan,sizeof(t[i].tenkhoan),a);
         t[i].tenkhoan[strlen(t[i].tenkhoan) -1 ] = 0;
         fscanf(a,"%d",&t[i].sotien);
+        fgetc(a);
         fgets(t[i].loai,sizeof(t[i].loai),a);
         t[i].loai[strlen(t[i].loai) -1 ] = 0;
-        fscanf(a,"%d%d%d",&t[i].ngay,&t[i].thang,&t[i].nam);
+        fscanf(a,"%d %d %d",&t[i].ngay,&t[i].thang,&t[i].nam);
         fgetc(a);
     }
 }
