@@ -37,6 +37,7 @@ int main () {
                 a = (giaodich *) malloc (sizeof(giaodich) * n);
                 docFile(c,n,a);
                 printf("Nhap du lieu tu file thanh cong!\n");
+                fclose(c);
             } else {
                 printf("Lua chon khong hop le!\n");
             }
@@ -83,6 +84,7 @@ int main () {
             FILE *b;
             b= fopen("output.txt","w");
             luuFile(b,n,a);
+            fclose (b);
             break;
 
             default:
@@ -90,7 +92,8 @@ int main () {
         }
 
         } while (chon !=0);
-
+    
+    free(a);
     return 0;
     
 }
