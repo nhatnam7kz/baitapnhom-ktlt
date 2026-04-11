@@ -54,24 +54,10 @@ int main () {
             if (a == NULL) {
                 printf("Chua co khoan giao dich duoc ghi\n");
             } else {
-            printf("Tong thu: %d\n",tinhtongThu(n,a)); }
+            inbaocao(n,a); }
             break;
 
-            case 4:
-            if (a == NULL) {
-                printf("Chua co khoan giao dich duoc ghi\n");
-            } else {
-            printf("Tong chi: %d\n",tinhtongChi(n,a)); }
-            break;
-
-            case 5:
-            if (a == NULL) {
-                printf("Chua co khoan giao dich duoc ghi\n");
-            } else {
-            printf("So du: %d\n",tinhsoDu(tinhtongThu(n,a),tinhtongChi(n,a))); }
-            break;
-
-            case 6: 
+            case 4: 
             if (a == NULL) {
                 printf("Chua co khoan giao dich duoc ghi\n");
             } else {
@@ -80,7 +66,7 @@ int main () {
             thongketheothang(n,a,thang,nam); }
             break;
 
-            case 7: 
+            case 5: 
             if (a == NULL) {
                 printf("Chua co khoan giao dich duoc ghi\n");
             } else {

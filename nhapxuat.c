@@ -9,11 +9,9 @@ int hienthimenu () {
     printf("\n========== QUAN LY THU CHI ==========\n");
     printf("1. Nhap giao dich\n");
     printf("2. Hien thi danh sach\n");
-    printf("3. Tong thu\n");
-    printf("4. Tong chi\n");
-    printf("5. So du\n");
-    printf("6. Thong ke theo thang\n");
-    printf("7. Tim kiem theo ten\n");
+    printf("3. Bao cao tai chinh\n");
+    printf("4. Thong ke theo thang\n");
+    printf("5. Tim kiem theo ten\n");
     printf("0. Thoat\n");
     printf("=====================================\n");
     printf("Nhap lua chon: ");
@@ -65,7 +63,7 @@ void indanhsach(int n, giaodich *t) {
 }
 
 
-void inbaocao(int n, giaodich t[]) {
+void inbaocao(int n, giaodich *t) {
     int thu = tinhtongThu(n, t);
     int chi = tinhtongChi(n, t);
     int sodu = thu - chi;
@@ -74,5 +72,5 @@ void inbaocao(int n, giaodich t[]) {
     printf("Tong thu : %d\n", thu);
     printf("Tong chi : %d\n", chi);
     printf("So du    : %d\n", sodu);
-    printf("=============================\n");
+    printf("================================\n");
 }

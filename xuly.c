@@ -32,19 +32,20 @@ int tinhsoDu (int thu, int chi) {
 
 void thongketheothang (int n, giaodich *t, int thang, int nam) {
     int i;
-    int tong = 0;
+    int j = 0;
     int check = 0;
 
     for (i=0;i<n;i++) {
         if (t[i].nam == nam && t[i].thang == thang ){
+            j++;
             if (check == 0) {
                 printf("\n===== DANH SACH GIAO DICH =====\n");
                 printf("%-5s %-20s %-10s %-10s %-10s\n", "STT", "Ten khoan", "So tien", "Loai", "Ngay");
                 check = 1;
             }
-            tong+= t[i].sotien;
+            
             printf("%-5d %-20s %-10d %-10s %02d/%02d/%04d\n",
-               i + 1,
+               j,
                t[i].tenkhoan,
                t[i].sotien,
                t[i].loai,
@@ -56,8 +57,6 @@ void thongketheothang (int n, giaodich *t, int thang, int nam) {
 
     if (check == 0) {
         printf("Khong tim thay giao dich trong %d/%d\n",thang,nam);
-    } else {
-        printf("Tong: %d\n",tong);
     }
 
     printf("================================\n");
@@ -65,9 +64,13 @@ void thongketheothang (int n, giaodich *t, int thang, int nam) {
 
 void timkiemtheoten (int n, giaodich *t, char key[]) {
     int i;
+    int j = 0;
     int check = 0;
+    int tong = 0;
     for (i=0;i<n;i++) {
         if (strcmp (t[i].tenkhoan, key) == 0) {
+            j++;
+            tong += t[i].sotien;
             if (check == 0) {
                 printf("\n===== DANH SACH GIAO DICH =====\n");
                 printf("%-5s %-20s %-10s %-10s %-10s\n", "STT", "Ten khoan", "So tien", "Loai", "Ngay");
@@ -75,7 +78,7 @@ void timkiemtheoten (int n, giaodich *t, char key[]) {
             }
             
             printf("%-5d %-20s %-10d %-10s %02d/%02d/%04d\n",
-               i + 1,
+               j,
                t[i].tenkhoan,
                t[i].sotien,
                t[i].loai,
@@ -88,6 +91,8 @@ void timkiemtheoten (int n, giaodich *t, char key[]) {
 
     if (check == 0) {
         printf("Khong tim thay ten khoan\n");
+    } else {
+        printf("%-5s %-20s %-10d\n", "Tong", "", tong);
     }
 
     printf("================================\n");
