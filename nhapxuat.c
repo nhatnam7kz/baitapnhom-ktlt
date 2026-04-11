@@ -44,33 +44,30 @@ void nhapgiaodich (giaodich *t, int n) {
 
 void indanhsach(int n, giaodich *t) {
     int i;
-
-    printf("\n===== DANH SACH GIAO DICH =====\n");
-    printf("%-5s %-20s %-10s %-10s %-10s\n", "STT", "Ten khoan", "So tien", "Loai", "Ngay");
-
+    printf("\n========== DANH SACH GIAO DICH ==========\n");
+    printf("%-5s %-20s %-10s %-12s %-10s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
+    
     for (i = 0; i < n; i++) {
-        printf("%-5d %-20s %-10d %-10s %02d/%02d/%04d\n",
+        printf("%-5d %-20s %-10s %-12d %02d/%02d/%04d\n",
                i + 1,
                t[i].tenkhoan,
-               t[i].sotien,
                t[i].loai,
+               t[i].sotien,
                t[i].ngay,
                t[i].thang,
                t[i].nam);
     }
-
-    printf("================================\n");
+    printf("==========================================\n");
 }
-
 
 void inbaocao(int n, giaodich *t) {
     int thu = tinhtongThu(n, t);
     int chi = tinhtongChi(n, t);
     int sodu = thu - chi;
 
-    printf("\n===== BAO CAO TAI CHINH =====\n");
-    printf("Tong thu : %d\n", thu);
-    printf("Tong chi : %d\n", chi);
-    printf("So du    : %d\n", sodu);
-    printf("================================\n");
+    printf("\n========== BAO CAO TAI CHINH ==========\n");
+    printf("  Tong thu : %15d\n", thu);
+    printf("  Tong chi : %15d\n", chi);
+    printf("  So du    : %15d\n", sodu);
+    printf("========================================\n");
 }

@@ -1,21 +1,19 @@
 #include "data.h"
 #include <stdio.h>
 #include <string.h>
-void luuFile (FILE *a,int n, giaodich *t) {
-    
+void luuFile(FILE *a, int n, giaodich *t) {
     int i;
-    fprintf(a,"\n%-5s %-25s %-10s %-10s %-12s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
-    fprintf(a,"-----------------------------------------------------------------\n");
-
-    for ( i = 0; i < n; i++) {
-        fprintf(a,"%-5d %-25s %-10s %-10d %02d/%02d/%04d\n",
-        i + 1,
-        t[i].tenkhoan,
-        t[i].loai,
-        t[i].sotien,
-        t[i].ngay,
-        t[i].thang,
-        t[i].nam );
+    fprintf(a, "\n%-5s %-20s %-10s %-12s %-10s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
+    
+    for (i = 0; i < n; i++) {
+        fprintf(a, "%-5d %-20s %-10s %-12d %02d/%02d/%04d\n",
+                i + 1,
+                t[i].tenkhoan,
+                t[i].loai,
+                t[i].sotien,
+                t[i].ngay,
+                t[i].thang,
+                t[i].nam);
     }
 }
 

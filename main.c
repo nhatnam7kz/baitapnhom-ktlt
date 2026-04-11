@@ -71,7 +71,7 @@ int main () {
             if (a == NULL) {
                 printf("Chua co khoan giao dich duoc ghi\n");
             } else {
-            char ten[10];
+            char ten[100];
             printf("Nhap ten khoan can tim: ");
             getchar();
             fgets(ten,sizeof(ten),stdin);

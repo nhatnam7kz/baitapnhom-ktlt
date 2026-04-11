@@ -30,70 +30,48 @@ int tinhsoDu (int thu, int chi) {
     return thu-chi;
 }
 
-void thongketheothang (int n, giaodich *t, int thang, int nam) {
-    int i;
-    int j = 0;
-    int check = 0;
-
-    for (i=0;i<n;i++) {
-        if (t[i].nam == nam && t[i].thang == thang ){
+void thongketheothang(int n, giaodich *t, int thang, int nam) {
+    int i, j = 0, check = 0;
+    for (i = 0; i < n; i++) {
+        if (t[i].nam == nam && t[i].thang == thang) {
             j++;
             if (check == 0) {
-                printf("\n===== DANH SACH GIAO DICH =====\n");
-                printf("%-5s %-20s %-10s %-10s %-10s\n", "STT", "Ten khoan", "So tien", "Loai", "Ngay");
+                printf("\n========== THONG KE THANG %02d/%04d ==========\n", thang, nam);
+                printf("%-5s %-20s %-10s %-12s %-10s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
                 check = 1;
             }
-            
-            printf("%-5d %-20s %-10d %-10s %02d/%02d/%04d\n",
-               j,
-               t[i].tenkhoan,
-               t[i].sotien,
-               t[i].loai,
-               t[i].ngay,
-               t[i].thang,
-               t[i].nam);   
+            printf("%-5d %-20s %-10s %-12d %02d/%02d/%04d\n",
+                   j, t[i].tenkhoan, t[i].loai, t[i].sotien,
+                   t[i].ngay, t[i].thang, t[i].nam);
         }
     }
-
     if (check == 0) {
-        printf("Khong tim thay giao dich trong %d/%d\n",thang,nam);
+        printf("\nKhong co giao dich nao trong thang %02d/%04d\n", thang, nam);
     }
-
-    printf("================================\n");
+    printf("==================================================\n");
 }
 
-void timkiemtheoten (int n, giaodich *t, char key[]) {
-    int i;
-    int j = 0;
-    int check = 0;
+void timkiemtheoten(int n, giaodich *t, char key[]) {
+    int i, j = 0, check = 0;
     int tong = 0;
-    for (i=0;i<n;i++) {
-        if (strcmp (t[i].tenkhoan, key) == 0) {
+    for (i = 0; i < n; i++) {
+        if (strcmp(t[i].tenkhoan, key) == 0) {
             j++;
             tong += t[i].sotien;
             if (check == 0) {
-                printf("\n===== DANH SACH GIAO DICH =====\n");
-                printf("%-5s %-20s %-10s %-10s %-10s\n", "STT", "Ten khoan", "So tien", "Loai", "Ngay");
+                printf("\n========== KET QUA TIM KIEM: \"%s\" ==========\n", key);
+                printf("%-5s %-20s %-10s %-12s %-10s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
                 check = 1;
             }
-            
-            printf("%-5d %-20s %-10d %-10s %02d/%02d/%04d\n",
-               j,
-               t[i].tenkhoan,
-               t[i].sotien,
-               t[i].loai,
-               t[i].ngay,
-               t[i].thang,
-               t[i].nam); 
-            
+            printf("%-5d %-20s %-10s %-12d %02d/%02d/%04d\n",
+                   j, t[i].tenkhoan, t[i].loai, t[i].sotien,
+                   t[i].ngay, t[i].thang, t[i].nam);
         }
     }
-
     if (check == 0) {
-        printf("Khong tim thay ten khoan\n");
+        printf("\nKhong tim thay ten khoan \"%s\"\n", key);
     } else {
-        printf("%-5s %-20s %-10d\n", "Tong", "", tong);
+        printf("%-5s %-20s %-10s %-12d\n", "Tong", "", "", tong);
     }
-
-    printf("================================\n");
+    printf("==================================================\n");
 }
