@@ -1,6 +1,24 @@
 #include "data.h"
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
+#define VALUE(y, m, d) ((y) * 10000 + (m) * 100 + (d))
+
+void sapxep (int n, giaodich *t) {
+    int i,j;
+    for (i=0;i<n-1;i++) {
+        for (j=i+1;j<n;j++) {
+            if ( VALUE( t[i].nam, t[i].thang, t[i].ngay) < VALUE( t[j].nam, t[j].thang, t[j].ngay ) ) {
+                giaodich temp;
+                temp = t[i];
+                t[i] = t[j];
+                t[j] = temp;
+            }
+        }
+    }
+}
+
+
 
 int  tinhtongThu (int n ,giaodich *t) {
     int i;
@@ -54,8 +72,19 @@ void thongketheothang(int n, giaodich *t, int thang, int nam) {
 void timkiemtheoten(int n, giaodich *t, char key[]) {
     int i, j = 0, check = 0;
     int tong = 0;
+    char temp1[strlen(key)+1];
+    strcpy(temp1,key);
+
+    for (i = 0; temp1[i] != '\0';i++) {
+        temp1[i] = tolower(temp1[i]);
+    }
+    
     for (i = 0; i < n; i++) {
-        if (strcmp(t[i].tenkhoan, key) == 0) {
+       char temp2[strlen(t[i].tenkhoan)+1];
+       strcpy(temp2,t[i].tenkhoan);
+       int z;
+       for (z = 0; temp2[z] != '\0';z++) temp2[z] = tolower(temp2[z]);
+       if (strstr(temp2,temp1) != NULL) {
             j++;
             tong += t[i].sotien;
             if (check == 0) {
@@ -66,7 +95,7 @@ void timkiemtheoten(int n, giaodich *t, char key[]) {
             printf("%-5d %-20s %-10s %-12d %02d/%02d/%04d\n",
                    j, t[i].tenkhoan, t[i].loai, t[i].sotien,
                    t[i].ngay, t[i].thang, t[i].nam);
-        }
+       }
     }
     if (check == 0) {
         printf("\nKhong tim thay ten khoan \"%s\"\n", key);

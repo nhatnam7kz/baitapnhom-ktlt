@@ -8,7 +8,7 @@
 
 
 int main () {
-    int n;
+    int n = 0;
     int chon;
 
     giaodich *a = NULL;
@@ -22,24 +22,37 @@ int main () {
 
             if (chon1 == 1) {
                 printf("So giao dich can nhap: "); scanf("%d",&n);
+                if (a != NULL) free(a);
                 a = (giaodich *) malloc (sizeof(giaodich) * n);
+                if (a == NULL) {
+                    printf("Loi: Khong du bo nho!\n");
+                    break;
+                }
                 nhapgiaodich(a,n);
+                sapxep(n,a);
                 break;
             } else if (chon1 == 2) {
                 FILE *c;
                 c= fopen("input.txt","r");
                 if (c == NULL) {
-                    printf("Khong tim thay file input.txt!\n");
+                    printf("Khong mo duoc file input.txt\n");
                     break;
                 }
                 fscanf(c,"%d",&n);
                 fgetc(c);
+                if (a != NULL) free(a);
                 a = (giaodich *) malloc (sizeof(giaodich) * n);
+                if (a == NULL) {               
+                    printf("Loi: Khong du bo nho\n");
+                    fclose(c);
+                    break;
+                }
                 docFile(c,n,a);
-                printf("Nhap du lieu tu file thanh cong!\n");
+                printf("Nhap du lieu tu file thanh cong\n");
+                sapxep(n,a);
                 fclose(c);
             } else {
-                printf("Lua chon khong hop le!\n");
+                printf("Lua chon khong hop le\n");
             }
 
             break;
@@ -80,11 +93,11 @@ int main () {
             break;
 
             case 0:
-            printf("Thoat chuong trinh!\n");
-            FILE *b;
-            b= fopen("output.txt","w");
-            luuFile(b,n,a);
-            fclose (b);
+            FILE *rpt = fopen("baocao.txt", "w");
+            if (rpt != NULL) {
+                xuatBaoCaoFile(rpt, n, a);
+                fclose(rpt);
+            }
             break;
 
             default:

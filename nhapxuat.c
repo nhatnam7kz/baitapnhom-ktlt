@@ -63,7 +63,7 @@ void indanhsach(int n, giaodich *t) {
 void inbaocao(int n, giaodich *t) {
     int thu = tinhtongThu(n, t);
     int chi = tinhtongChi(n, t);
-    int sodu = thu - chi;
+    int sodu = tinhsoDu(thu,chi);
 
     printf("\n========== BAO CAO TAI CHINH ==========\n");
     printf("  Tong thu : %15d\n", thu);

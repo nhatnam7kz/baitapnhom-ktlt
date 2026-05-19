@@ -4,10 +4,7 @@
 #include "data.h"
 #include <stdio.h>
 
-void luuFile (FILE *a,int n, giaodich *t);
-
-
-
 void docFile (FILE *a ,int n, giaodich *t);
+void xuatBaoCaoFile(FILE *a, int n, giaodich *t);
 
 #endif
