@@ -71,22 +71,27 @@ void thongketheothang(int n, giaodich *t, int thang, int nam) {
 
 void timkiemtheoten(int n, giaodich *t, char key[]) {
     int i, j = 0, check = 0;
-    int tong = 0;
+    int tongThu = 0; // tách thành 2 biến 
+    int tongChi = 0;
+    
     char temp1[strlen(key)+1];
     strcpy(temp1,key);
 
     for (i = 0; temp1[i] != '\0';i++) {
         temp1[i] = tolower(temp1[i]);
     }
-    
     for (i = 0; i < n; i++) {
        char temp2[strlen(t[i].tenkhoan)+1];
        strcpy(temp2,t[i].tenkhoan);
        int z;
        for (z = 0; temp2[z] != '\0';z++) temp2[z] = tolower(temp2[z]);
        if (strstr(temp2,temp1) != NULL) {
-            j++;
-            tong += t[i].sotien;
+            j++;  
+            if (strcmp(t[i].loai, "thu") == 0) { // kiểm tra các giao dịch trước khi cộng dồn
+                tongThu += t[i].sotien;
+            } else if (strcmp(t[i].loai, "chi") == 0) {
+                tongChi += t[i].sotien;
+            } 
             if (check == 0) {
                 printf("\n========== KET QUA TIM KIEM: \"%s\" ==========\n", key);
                 printf("%-5s %-20s %-10s %-12s %-10s\n", "STT", "Ten khoan", "Loai", "So tien", "Ngay");
@@ -100,7 +105,10 @@ void timkiemtheoten(int n, giaodich *t, char key[]) {
     if (check == 0) {
         printf("\nKhong tim thay ten khoan \"%s\"\n", key);
     } else {
-        printf("%-5s %-20s %-10s %-12d\n", "Tong", "", "", tong);
+        printf("--------------------------------------------------\n"); // thêm in ra tổng thu và chi 
+        printf("Tong Thu: %d\n", tongThu);
+        printf("Tong Chi: %d\n", tongChi);
+        printf("So du con lai: %d\n", tongThu - tongChi);
     }
     printf("==================================================\n");
 }
